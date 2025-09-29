@@ -1,0 +1,374 @@
+1. Write a VB.net program to perform arithmetic operations.
+
+Imports System
+Module ArithmeticOperations
+
+    Sub Main()
+        Dim num1, num2 As Double
+        Dim result As Double
+        Dim operation As Char
+
+        ' Get input from the user
+        Console.Write("Enter first number: ")
+        num1 = Convert.ToDouble(Console.ReadLine())
+
+        Console.Write("Enter second number: ")
+        num2 = Convert.ToDouble(Console.ReadLine())
+
+        Console.Write("Enter an operation (+, -, *, /): ")
+        operation = Convert.ToChar(Console.ReadLine())
+
+        ' Perform operation
+        Select Case operation
+            Case "+"c
+                result = num1 + num2
+                Console.WriteLine("Result: " & result)
+            Case "-"c
+                result = num1 - num2
+                Console.WriteLine("Result: " & result)
+            Case "*"c
+                result = num1 * num2
+                Console.WriteLine("Result: " & result)
+            Case "/"c
+                If num2 <> 0 Then
+                    result = num1 / num2
+                    Console.WriteLine("Result: " & result)
+                Else
+                    Console.WriteLine("Error: Division by zero is not allowed.")
+                End If
+            Case Else
+                Console.WriteLine("Invalid operation.")
+        End Select
+
+        ' Pause the screen
+        Console.WriteLine("Press any key to exit...")
+        Console.ReadKey()
+    End Sub
+
+End Module
+
+
+
+
+
+
+2. Develop a VB.net program to calculate the DNA sequence.
+
+Imports System
+Module SimpleDNA
+
+    Sub Main()
+        Console.Write("Enter DNA sequence (A, T, C, G): ")
+        Dim dna As String = Console.ReadLine().ToUpper()
+
+        Dim aCount As Integer = 0
+        Dim tCount As Integer = 0
+        Dim cCount As Integer = 0
+        Dim gCount As Integer = 0
+
+        For Each ch As Char In dna
+            If ch = "A"c Then
+                aCount += 1
+            ElseIf ch = "T"c Then
+                tCount += 1
+            ElseIf ch = "C"c Then
+                cCount += 1
+            ElseIf ch = "G"c Then
+                gCount += 1
+            End If
+        Next
+
+        Console.WriteLine("A: " & aCount)
+        Console.WriteLine("T: " & tCount)
+        Console.WriteLine("C: " & cCount)
+        Console.WriteLine("G: " & gCount)
+
+        Console.WriteLine("Press any key to exit...")
+        Console.ReadKey()
+    End Sub
+
+End Module
+
+
+
+
+
+3. Write a .net program to design a simple digital stopwatch using Windows Forms that can Start, Stop and Reset.
+
+
+Public Class Form1
+    Dim second As Integer = 0
+    Dim minute As Integer = 0
+    Dim hours As Integer = 0
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        second += 1
+
+        If second = 60 Then
+            second = 0
+            minute += 1
+        End If
+
+        If minute = 60 Then
+            minute = 0
+            hours += 1
+        End If
+
+        ' Format time as HH:MM:SS
+        Label1.Text = Format(hours, "00") & ":" & Format(minute, "00") & ":" & Format(second, "00")
+    End Sub
+
+    ' Start
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Timer1.Start()
+    End Sub
+
+    ' Stop
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+        Timer1.Stop()
+    End Sub
+
+    ' Reset
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Timer1.Stop()
+        second = 0
+        minute = 0
+        hours = 0
+        Label1.Text = "00:00:00"
+    End Sub
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Label1.Text = "00:00:00"
+    End Sub
+End Class
+
+
+
+
+
+4 - Write a .net program for Factorial
+
+
+Public Class Form1
+Function fact(ByVal a As Integer) As Integer
+Dim f As Integer
+Dim i As Integer
+f = 1
+For i = 1 To a
+f = f*i
+Next
+fact = f
+End Function
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+Dim n, r As Integer
+n = TextBox1.Text
+r = fact(n)
+MsgBox("factorial is :" & r, vbInformation, "factoral")
+End Sub
+End Class
+
+
+
+
+
+5. Demonstrate the concept of textbox controls.
+
+Program:
+Public Class Form1
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set form title
+        Me.Text = "TextBox Demo"
+        
+        ' Initialize and configure Label
+        Dim lbl As New Label()
+        lbl.Text = "Enter your name:"
+        lbl.Location = New Point(20, 20)
+        lbl.AutoSize = True
+        Me.Controls.Add(lbl)
+
+        ' Initialize and configure TextBox
+        Dim txtName As New TextBox()
+        txtName.Name = "txtName"
+        txtName.Location = New Point(20, 50)
+        txtName.Width = 200
+        Me.Controls.Add(txtName)
+
+        ' Initialize and configure Button
+        Dim btnShow As New Button()
+        btnShow.Text = "Show Name"
+        btnShow.Location = New Point(20, 90)
+        AddHandler btnShow.Click, Sub()
+                                      MessageBox.Show("Hello, " & txtName.Text & "!", "Greeting")
+                                  End Sub
+        Me.Controls.Add(btnShow)
+    End Sub
+
+End Class
+
+
+
+
+
+6. RADIO BUTTON CONTROL
+
+
+Public Class Form1
+
+    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
+
+    End Sub
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        If CheckBox1.Checked Then
+            MsgBox(CheckBox1.Text)
+        ElseIf CheckBox2.Checked Then
+            MsgBox("Under 20")
+        ElseIf CheckBox3.Checked Then
+            MsgBox("Under 25")
+        Else
+            MsgBox("Please choose an appropriate age")
+        End If
+    End Sub
+    Private Sub RadioButton3_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton1.CheckedChanged
+        GroupBox1.Enabled = False
+        GroupBox3.Enabled = True
+    End Sub
+    Private Sub RadioButton2_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton2.CheckedChanged
+        GroupBox3.Enabled = False
+        GroupBox1.Enabled = True
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton3.CheckedChanged
+        GroupBox1.Enabled = False
+        GroupBox3.Enabled = False
+    End Sub
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
+End Class
+
+
+
+
+
+
+7. FUNCTIONS
+
+Module Module1
+    Sub Main()
+        Dim m1, m2, m3, m4, m5, total As Integer
+        Dim name, grade As String
+        Dim avg As Double
+        Console.WriteLine(&quot;enter your name&quot;)
+        name = Console.ReadLine()
+        Console.WriteLine(&quot;enter 5 subject marks:&quot;)
+        m1 = Console.ReadLine()
+        m2 = Console.ReadLine()
+        m3 = Console.ReadLine()
+        m4 = Console.ReadLine()
+        m5 = Console.ReadLine()
+        total = m1 + m2 + m3 + m4 + m5
+        avg = total / 5
+        If (avg &gt;= 85) Then
+
+            grade = &quot;A&quot;
+        ElseIf (avg &gt;= 75 And avg &lt; 85) Then
+            grade = &quot;B&quot;
+        ElseIf (avg &gt;= 65 And avg &lt; 75) Then
+            grade = &quot;c&quot;
+        Else
+            grade = &quot;D&quot;
+        End If
+        Console.WriteLine(&quot;the name of the student is:{0}&quot;, name)
+        Console.WriteLine(&quot;mark in all the subjects m1=:{0} m2:={1} m3=:{2} m4=:{3} m5=:{4}&quot;,
+m1, m2, m3, m4, m5)
+        Console.WriteLine(&quot;total is:{0}&quot;, total)
+        Console.WriteLine(&quot;the average of the student is:{0}&quot;, avg)
+        Console.WriteLine(&quot;the grade of the student is:{0}&quot;, grade)
+        Console.ReadKey()
+
+
+
+
+8. MESSAGE BOX
+
+Imports System.10
+Public Class Form1
+Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+Handles Button1.Click
+Dim name As String = TextBox1.Text
+Dim selectedDate As String = DateTimePicker1.Value.ToString("MM/dd/yyyy")
+Dim senderInfo As String = TextBox2.Text
+If name Is Nothing OrElse name.Trim() = OrElse senderinfo Is Nothing OrElse senderInfo.Trim() = "" Then
+MessageBox.Show("bothfield must be filled out!", "validation error", MessageBoxButtons.OK, MessageBoxIcon. Warning)
+Return
+End If
+Dim message As String = "thankyou" + TextBox1.Text + "form" + TextBox2.Text + " " + selectedDate
+MessageBox.Show(message, "registered", MessageBoxButtons.OK, MessageBoxIcon.Information)
+Try
+Dim logFilePath As String = Path. Combine (Application. StartupPath, "message_log.txt") File.AppendAlltext(logFilePath, "(DateTime.Now}. {message}{environment.NewLine}")
+Catch ex As Exception
+MessageBox.Show("error writing to log file: (ex message}", "error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+End Try
+End Sub
+Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+End Sub
+End Class
+
+
+
+
+9. Connect ODBC in Sql server management Studio Create a database followed by table with the columns and save it.
+
+
+Imports System.Data
+Imports System.Data.SqlClient
+
+Module Module1
+
+    Sub Main()
+        ' Connection string (edit as needed)
+        Dim connectionString As String = "Server=CSLAB7-2\MSSQLSERVER02;Database=prg9;Integrated Security=True"
+
+        ' Input values
+        Console.Write("Enter Employee Name: ")
+        Dim name As String = Console.ReadLine()
+
+        Console.Write("Enter Department: ")
+        Dim department As String = Console.ReadLine()
+
+        Console.Write("Enter Salary: ")
+        Dim salaryInput As String = Console.ReadLine()
+        Dim salary As Decimal
+
+        If Not Decimal.TryParse(salaryInput, salary) Then
+            Console.WriteLine("Invalid salary input.")
+            Return
+        End If
+
+        ' Insert query using ADO.NET
+        Dim query As String = "INSERT INTO Employees (Name, Department, Salary) VALUES (@Name, @Department, @Salary)"
+
+        Try
+            Using conn As New SqlConnection(connectionString)
+                conn.Open()
+                Using cmd As New SqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@Name", name)
+                    cmd.Parameters.AddWithValue("@Department", department)
+                    cmd.Parameters.AddWithValue("@Salary", salary)
+
+                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
+                    Console.WriteLine("Record inserted successfully. Rows affected: " & rowsAffected)
+                End Using
+            End Using
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
+
+        Console.WriteLine("Press any key to exit...")
+        Console.ReadKey()
+    End Sub
+
+End Module
+
