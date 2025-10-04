@@ -1,374 +1,464 @@
-1. Write a VB.net program to perform arithmetic operations.
+program - 1
 
-Imports System
-Module ArithmeticOperations
-
-    Sub Main()
-        Dim num1, num2 As Double
-        Dim result As Double
-        Dim operation As Char
-
-        ' Get input from the user
-        Console.Write("Enter first number: ")
-        num1 = Convert.ToDouble(Console.ReadLine())
-
-        Console.Write("Enter second number: ")
-        num2 = Convert.ToDouble(Console.ReadLine())
-
-        Console.Write("Enter an operation (+, -, *, /): ")
-        operation = Convert.ToChar(Console.ReadLine())
-
-        ' Perform operation
-        Select Case operation
-            Case "+"c
-                result = num1 + num2
-                Console.WriteLine("Result: " & result)
-            Case "-"c
-                result = num1 - num2
-                Console.WriteLine("Result: " & result)
-            Case "*"c
-                result = num1 * num2
-                Console.WriteLine("Result: " & result)
-            Case "/"c
-                If num2 <> 0 Then
-                    result = num1 / num2
-                    Console.WriteLine("Result: " & result)
-                Else
-                    Console.WriteLine("Error: Division by zero is not allowed.")
-                End If
-            Case Else
-                Console.WriteLine("Invalid operation.")
-        End Select
-
-        ' Pause the screen
-        Console.WriteLine("Press any key to exit...")
-        Console.ReadKey()
-    End Sub
-
-End Module
+import java.util.Scanner;
+public class  stringfunction{
+  public static void main(String []args)
+  {
+    Scanner sc = new Scanner(System.in); 
+    System.out.print("Input a first string ");
+      String s1 = sc.nextLine();
+    System.out.print("Input second string ");
+      String s2 = sc.nextLine();
+    boolean x=s1.equals(s2);
+    System.out.println("Compare s1 and s2:"+x);
+    System.out.println("Character at given position is:"+s1.charAt(5));
+    System.out.println(s1.concat(" the author"));
+    System.out.println(s1.length());
+    System.out.println(s1.toLowerCase());
+    System.out.println(s1.toUpperCase());
+    System.out.println(s1.indexOf('a'));
+    System.out.println(s1.substring(0,4));
+    System.out.println(s1.substring(4));  
+  }
+}
 
 
+program - 2
+
+class student 
+{
+    String name;
+    String dept;
+    int age;
+    public student(String name, String dept, int age) 
+{
+        this.name = name;
+        this.dept = dept;
+        this.age = age;
+    }
+    public void displayDetails() 
+{
+        System.out.println("Name: " + name);
+        System.out.println("Department: " + dept);
+        System.out.println("Age: " + age);
+    }
+    public void greetings() {
+        System.out.println(" Hello " + name );
+    }}
+public class Main {
+    public static void main(String[ ] args) 
+{
+        student  stu1 = new student("ravi”,"cs",101);
+        student stu2 = new  student("ram","IT", 102);
+System.out.println("\n Details of Student 1:");
+        stu1.displayDetails();
+        stu1.greetings();
+
+        System.out.println("\n Details of Student 2:");
+        stu2.displayDetails();
+        stu2.greetings();
+    }
+}
 
 
+program - 3
 
+public class Calculator 
+{
+    public Calculator() 
+{
+        System.out.println("Default Calculator created.");
+    }
+    public Calculator(String type) 
+    {
+        System.out.println(type + " Calculator created.");
+    }
+    public Calculator(String type, int version) 
+{
+        System.out.println(type + " Calculator version " + version + " created.");
+    }
 
-2. Develop a VB.net program to calculate the DNA sequence.
+    public int add(int a, int b) 
+    {
+        System.out.println("Adding two integers:");
+        return a + b;
+    }
+    public int add(int a, int b, int c) 
+    {
+        System.out.println("Adding three integers:");
+        return a + b + c;
+    }
 
-Imports System
-Module SimpleDNA
+    public static void main(String[] args) 
+   {
+    System.out.println("\n--- Demonstrating Constructor Overloading ---");
+    System.out.println("\n=======================================");
+        Calculator calc1 = new Calculator(); 
+        Calculator calc2 = new Calculator("Scientific"); 
+        Calculator calc3 = new Calculator("Financial", 2); 
 
-    Sub Main()
-        Console.Write("Enter DNA sequence (A, T, C, G): ")
-        Dim dna As String = Console.ReadLine().ToUpper()
-
-        Dim aCount As Integer = 0
-        Dim tCount As Integer = 0
-        Dim cCount As Integer = 0
-        Dim gCount As Integer = 0
-
-        For Each ch As Char In dna
-            If ch = "A"c Then
-                aCount += 1
-            ElseIf ch = "T"c Then
-                tCount += 1
-            ElseIf ch = "C"c Then
-                cCount += 1
-            ElseIf ch = "G"c Then
-                gCount += 1
-            End If
-        Next
-
-        Console.WriteLine("A: " & aCount)
-        Console.WriteLine("T: " & tCount)
-        Console.WriteLine("C: " & cCount)
-        Console.WriteLine("G: " & gCount)
-
-        Console.WriteLine("Press any key to exit...")
-        Console.ReadKey()
-    End Sub
-
-End Module
-
-
-
-
-
-3. Write a .net program to design a simple digital stopwatch using Windows Forms that can Start, Stop and Reset.
-
-
-Public Class Form1
-    Dim second As Integer = 0
-    Dim minute As Integer = 0
-    Dim hours As Integer = 0
-
-    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-        second += 1
-
-        If second = 60 Then
-            second = 0
-            minute += 1
-        End If
-
-        If minute = 60 Then
-            minute = 0
-            hours += 1
-        End If
-
-        ' Format time as HH:MM:SS
-        Label1.Text = Format(hours, "00") & ":" & Format(minute, "00") & ":" & Format(second, "00")
-    End Sub
-
-    ' Start
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        Timer1.Start()
-    End Sub
-
-    ' Stop
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
-        Timer1.Stop()
-    End Sub
-
-    ' Reset
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        Timer1.Stop()
-        second = 0
-        minute = 0
-        hours = 0
-        Label1.Text = "00:00:00"
-    End Sub
-
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Label1.Text = "00:00:00"
-    End Sub
-End Class
-
-
-
-
-
-4 - Write a .net program for Factorial
-
-
-Public Class Form1
-Function fact(ByVal a As Integer) As Integer
-Dim f As Integer
-Dim i As Integer
-f = 1
-For i = 1 To a
-f = f*i
-Next
-fact = f
-End Function
-Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-Dim n, r As Integer
-n = TextBox1.Text
-r = fact(n)
-MsgBox("factorial is :" & r, vbInformation, "factoral")
-End Sub
-End Class
-
-
-
-
-
-5. Demonstrate the concept of textbox controls.
-
-Program:
-Public Class Form1
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Set form title
-        Me.Text = "TextBox Demo"
+        System.out.println("\n--- Demonstrating Method Overloading ---");
+       System.out.println("\n=======================================");
+        Calculator  arith = new Calculator(); 
+        System.out.println("Sum of 5 and 10: " + arith.add(5, 10));
+        System.out.println("Sum of 5, 10, and 15: " + arith.add(5, 10, 15));
         
-        ' Initialize and configure Label
-        Dim lbl As New Label()
-        lbl.Text = "Enter your name:"
-        lbl.Location = New Point(20, 20)
-        lbl.AutoSize = True
-        Me.Controls.Add(lbl)
-
-        ' Initialize and configure TextBox
-        Dim txtName As New TextBox()
-        txtName.Name = "txtName"
-        txtName.Location = New Point(20, 50)
-        txtName.Width = 200
-        Me.Controls.Add(txtName)
-
-        ' Initialize and configure Button
-        Dim btnShow As New Button()
-        btnShow.Text = "Show Name"
-        btnShow.Location = New Point(20, 90)
-        AddHandler btnShow.Click, Sub()
-                                      MessageBox.Show("Hello, " & txtName.Text & "!", "Greeting")
-                                  End Sub
-        Me.Controls.Add(btnShow)
-    End Sub
-
-End Class
+    }
+}
 
 
+program - 4
 
+class student {
+    void display() {
+        System.out.println("BASE CLASS");
+    }
+}
+class stud1 extends student {
+    void display() {
+        System.out.println("SINGLE INHERITANCE- WELCOME STUD1");
+    }
+}
+class stud2 extends stud1 {
+    void display() {
+        System.out.println("MULTILEVEL INHERITANCE-WELCOME STUD2");
+    }
+}
 
-
-6. RADIO BUTTON CONTROL
-
-
-Public Class Form1
-
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
-
-    End Sub
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
-        If CheckBox1.Checked Then
-            MsgBox(CheckBox1.Text)
-        ElseIf CheckBox2.Checked Then
-            MsgBox("Under 20")
-        ElseIf CheckBox3.Checked Then
-            MsgBox("Under 25")
-        Else
-            MsgBox("Please choose an appropriate age")
-        End If
-    End Sub
-    Private Sub RadioButton3_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton1.CheckedChanged
-        GroupBox1.Enabled = False
-        GroupBox3.Enabled = True
-    End Sub
-    Private Sub RadioButton2_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton2.CheckedChanged
-        GroupBox3.Enabled = False
-        GroupBox1.Enabled = True
-    End Sub
-
-    Private Sub RadioButton1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RadioButton3.CheckedChanged
-        GroupBox1.Enabled = False
-        GroupBox3.Enabled = False
-    End Sub
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-End Class
+class stud3 extends student {
+    void display() {
+        System.out.println("HIERARCHIAL INHERITANCE-WELCOME STUD3");
+    }
+}
+public class InheritanceDemo {
+    public static void main(String[] args) {
+        stud1 obj1 = new stud1();
+        obj1.display();  
+        stud2 obj2 = new stud2();
+        obj2.display();  
+        stud3 obj3 = new stud3();
+        obj3.display();  
+         student obj = new student();
+        obj.display();  }}
 
 
 
+program - 5
+
+// Define interface
+interface EmployeeDetails {
+    void showDetails();       // To display employee data
+    void calculateSalary();   // To calculate salary
+}
+
+// Implementing class
+class Employee implements EmployeeDetails {
+    String name;
+    int empId;
+    double basicSalary;
+    double hra, da, totalSalary;
+
+    // Constructor to initialize employee data
+    Employee(String name, int empId, double basicSalary) {
+        this.name = name;
+        this.empId = empId;
+        this.basicSalary = basicSalary;
+    }
+
+    // Method to show employee details
+    public void showDetails() {
+        System.out.println("\n--- Employee Details ---");
+        System.out.println("Employee ID   : " + empId);
+        System.out.println("Employee Name : " + name);
+        System.out.println("Basic Salary  : ₹" + basicSalary);
+    }
+
+    // Method to calculate and display salary
+    public void calculateSalary() {
+        hra = 0.20 * basicSalary;  // HRA = 20%
+        da = 0.10 * basicSalary;   // DA = 10%
+        totalSalary = basicSalary + hra + da;
+
+        System.out.println("\n--- Salary Breakdown ---");
+        System.out.println("HRA (20%)     : ₹" + hra);
+        System.out.println("DA (10%)      : ₹" + da);
+        System.out.println("Total Salary  : ₹" + totalSalary);
+    }
+}
+
+// Main class to test
+public class EmployeeInterfaceDemo {
+    public static void main(String[] args) {
+        // Create Employee object
+        Employee emp = new Employee("John Doe", 101, 30000);
+
+        // Call interface methods
+        emp.showDetails();
+        emp.calculateSalary();
+    }
+}
 
 
 
-7. FUNCTIONS
+program - 6
 
-Module Module1
-    Sub Main()
-        Dim m1, m2, m3, m4, m5, total As Integer
-        Dim name, grade As String
-        Dim avg As Double
-        Console.WriteLine(&quot;enter your name&quot;)
-        name = Console.ReadLine()
-        Console.WriteLine(&quot;enter 5 subject marks:&quot;)
-        m1 = Console.ReadLine()
-        m2 = Console.ReadLine()
-        m3 = Console.ReadLine()
-        m4 = Console.ReadLine()
-        m5 = Console.ReadLine()
-        total = m1 + m2 + m3 + m4 + m5
-        avg = total / 5
-        If (avg &gt;= 85) Then
-
-            grade = &quot;A&quot;
-        ElseIf (avg &gt;= 75 And avg &lt; 85) Then
-            grade = &quot;B&quot;
-        ElseIf (avg &gt;= 65 And avg &lt; 75) Then
-            grade = &quot;c&quot;
-        Else
-            grade = &quot;D&quot;
-        End If
-        Console.WriteLine(&quot;the name of the student is:{0}&quot;, name)
-        Console.WriteLine(&quot;mark in all the subjects m1=:{0} m2:={1} m3=:{2} m4=:{3} m5=:{4}&quot;,
-m1, m2, m3, m4, m5)
-        Console.WriteLine(&quot;total is:{0}&quot;, total)
-        Console.WriteLine(&quot;the average of the student is:{0}&quot;, avg)
-        Console.WriteLine(&quot;the grade of the student is:{0}&quot;, grade)
-        Console.ReadKey()
-
-
-
-
-8. MESSAGE BOX
-
-Imports System.10
-Public Class Form1
-Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-Handles Button1.Click
-Dim name As String = TextBox1.Text
-Dim selectedDate As String = DateTimePicker1.Value.ToString("MM/dd/yyyy")
-Dim senderInfo As String = TextBox2.Text
-If name Is Nothing OrElse name.Trim() = OrElse senderinfo Is Nothing OrElse senderInfo.Trim() = "" Then
-MessageBox.Show("bothfield must be filled out!", "validation error", MessageBoxButtons.OK, MessageBoxIcon. Warning)
-Return
-End If
-Dim message As String = "thankyou" + TextBox1.Text + "form" + TextBox2.Text + " " + selectedDate
-MessageBox.Show(message, "registered", MessageBoxButtons.OK, MessageBoxIcon.Information)
-Try
-Dim logFilePath As String = Path. Combine (Application. StartupPath, "message_log.txt") File.AppendAlltext(logFilePath, "(DateTime.Now}. {message}{environment.NewLine}")
-Catch ex As Exception
-MessageBox.Show("error writing to log file: (ex message}", "error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-End Try
-End Sub
-Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-End Sub
-End Class
+class fivetable extends Thread
+{
+public void run()
+{
+for (int i=1;i<5;i++)
+System.out.println(i+"*5="+(i*5));
+}
+}
+class seventable extends Thread
+{
+public void run()
+{
+for (int i=1;i<5;i++)
+System.out.println(i+"*7="+(i*7));
+}
+}
+class thirteentable extends Thread
+{
+public void run()
+{
+for (int i=1;i<5;i++)
+System.out.println(i+"*13="+(i*13));
+}
+}
+public class multi
+{                                                                                                      
+public static void main(String args[])
+{
+fivetable five=new fivetable();
+seventable seven=new seventable();
+thirteentable thirteen=new thirteentable();
+five.setPriority(1);
+seven.setPriority(6);
+thirteen.setPriority(9);
+System.out.println("*******MULTITHREADING CONCEPT************");
+System.out.println("Multiplication Table using MultiThreading");
+System.out.println("*****************************************");
+five.start();
+seven.start();
+thirteen.start();
+}
+}
 
 
 
+program - 7 
 
-9. Connect ODBC in Sql server management Studio Create a database followed by table with the columns and save it.
+import java.io.*;
+
+public class ExceptionDemo {
+
+public static void main(String[] args) {
+System.out.println("----- Java Exception Handling Demo	");
 
 
-Imports System.Data
-Imports System.Data.SqlClient
+// 1. NullPointerException try {
+String str = null;
+System.out.println("Length of the string: " + str.length());
 
-Module Module1
+} catch (NullPointerException e) {
+System.out.println("Caught NullPointerException: " + e.getMessage());
+}
 
-    Sub Main()
-        ' Connection string (edit as needed)
-        Dim connectionString As String = "Server=CSLAB7-2\MSSQLSERVER02;Database=prg9;Integrated Security=True"
+// 2. ArithmeticException try {
+int a = 10, b = 0; int result = a / b;
+System.out.println("Result: " + result);
+} catch (ArithmeticException e) {
+System.out.println("Caught ArithmeticException: " + e.getMessage());
+}
 
-        ' Input values
-        Console.Write("Enter Employee Name: ")
-        Dim name As String = Console.ReadLine()
+// 3. IOException try {
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); System.out.print("Enter your name: ");
+String name = reader.readLine(); // This may throw IOException System.out.println("Hello, " + name + "!");
+} catch (IOException e) {
+System.out.println("Caught IOException: " + e.getMessage());
+}
 
-        Console.Write("Enter Department: ")
-        Dim department As String = Console.ReadLine()
+// 4. ArrayIndexOutOfBoundsException try {
+int[] arr = {1, 2, 3};
+System.out.println("Accessing 5th element: " + arr[4]);
+} catch (ArrayIndexOutOfBoundsException e) {
+System.out.println("Caught ArrayIndexOutOfBoundsException: " + e.getMessage());
+}
+System.out.println("----- Program Execution Completed	");
+}
+}
 
-        Console.Write("Enter Salary: ")
-        Dim salaryInput As String = Console.ReadLine()
-        Dim salary As Decimal
 
-        If Not Decimal.TryParse(salaryInput, salary) Then
-            Console.WriteLine("Invalid salary input.")
-            Return
-        End If
+program - 8 (A) 
 
-        ' Insert query using ADO.NET
-        Dim query As String = "INSERT INTO Employees (Name, Department, Salary) VALUES (@Name, @Department, @Salary)"
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
-        Try
-            Using conn As New SqlConnection(connectionString)
-                conn.Open()
-                Using cmd As New SqlCommand(query, conn)
-                    cmd.Parameters.AddWithValue("@Name", name)
-                    cmd.Parameters.AddWithValue("@Department", department)
-                    cmd.Parameters.AddWithValue("@Salary", salary)
+public class LoginForm extends JFrame implements ActionListener {
+    JTextField tfUsername;
+    JPasswordField pfPassword;
+    JButton btnLogin;
 
-                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
-                    Console.WriteLine("Record inserted successfully. Rows affected: " & rowsAffected)
-                End Using
-            End Using
-        Catch ex As Exception
-            Console.WriteLine("Error: " & ex.Message)
-        End Try
+    public LoginForm() {
+        setTitle("Login Form");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(3, 2, 5, 5));
 
-        Console.WriteLine("Press any key to exit...")
-        Console.ReadKey()
-    End Sub
+        // Labels and Fields
+        add(new JLabel("Username:"));
+        tfUsername = new JTextField();
+        add(tfUsername);
 
-End Module
+        add(new JLabel("Password:"));
+        pfPassword = new JPasswordField();
+        add(pfPassword);
+        btnLogin = new JButton("Login");
+        btnLogin.addActionListener(this);
+        add(btnLogin);
+
+        setLocationRelativeTo(null); // Center window
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String username = tfUsername.getText();
+        String password = new String(pfPassword.getPassword());
+
+        // Hardcoded credentials
+        if (username.equals("admin") && password.equals("1234")) {
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Invalid Username or Password");
+        }
+    }
+
+    public static void main(String[] args) {
+        new LoginForm();
+    }
+}
+
+
+program - 8 (B)
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class ValidationForm extends JFrame implements ActionListener {
+    JTextField tfName, tfEmail;
+    JButton btnSubmit;
+
+    public ValidationForm() {
+        setTitle("Form Validation");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new GridLayout(3, 2, 5, 5));
+
+        add(new JLabel("Name:"));
+        tfName = new JTextField();
+        add(tfName);
+
+        add(new JLabel("Email:"));
+        tfEmail = new JTextField();
+        add(tfEmail);
+
+        btnSubmit = new JButton("Submit");
+        btnSubmit.addActionListener(this);
+        add(btnSubmit);
+
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String name = tfName.getText().trim();
+        String email = tfEmail.getText().trim();
+
+        if (name.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "All fields are required!", "Validation Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Form Submitted Successfully!");
+        }
+    }
+
+    public static void main(String[] args) {
+        new ValidationForm();
+    }
+}
+
+
+
+program - 9
+
+
+import java.util.Random;
+import java.util.Scanner;
+public class DnaSequenceGenerator {
+    // Define possible nucleotides in a DNA sequence
+private static final char[] NUCLEOTIDES = {'A', 'T', 'C', 'G'};
+    // Generate a random DNA sequence of the given length
+public static String generateDnaSequence(int length) {
+        Random random = new Random();
+        StringBuilder dna = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            char nucleotide = NUCLEOTIDES[random.nextInt(NUCLEOTIDES.length)];
+            dna.append(nucleotide);
+        }
+        return dna.toString();
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the length of the DNA sequence to generate: ");
+        int length = scanner.nextInt();
+        if (length <= 0) {
+            System.out.println("Invalid input. Please enter a positive integer.");
+        } else {
+            String dnaSequence = generateDnaSequence(length);
+            System.out.println("Generated DNA Sequence: " + dnaSequence);
+        }
+        scanner.close();
+    }
+}
+
+
+
+program - 10
+
+import java.util.Random;
+import java.util.Scanner;
+public class ProteinSequenceGenerator {
+    // 20 standard amino acids represented by their single-letter codes
+    private static final char[] AMINO_ACIDS = {
+        'A', 'R', 'N', 'D', 'C',
+        'E', 'Q', 'G', 'H', 'I',
+        'L', 'K', 'M', 'F', 'P',
+        'S', 'T', 'W', 'Y', 'V'
+    };
+    // Function to generate a random protein sequence
+    public static String generateProteinSequence(int length) {
+        Random random = new Random();
+        StringBuilder protein = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            char aminoAcid = AMINO_ACIDS[random.nextInt(AMINO_ACIDS.length)];
+            protein.append(aminoAcid);
+        }
+        return protein.toString();
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the length of the protein sequence to generate: ");
+        int length = scanner.nextInt();
+        if (length <= 0) {
+            System.out.println("Invalid input. Please enter a positive integer.");
+        } else {
+            String proteinSequence = generateProteinSequence(length);
+            System.out.println("Generated Protein Sequence: " + proteinSequence);
+        }
+        scanner.close();
+    }}
+
 
