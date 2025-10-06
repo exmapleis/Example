@@ -202,47 +202,49 @@ public class EmployeeInterfaceDemo {
 
 program - 6
 
-class fivetable extends Thread
+
+class MyRunnable implements Runnable{
+
+public void run(){
+
+for(int i=1;i<=5;i++){
+
+System.out.println(Thread.currentThread().getName()+"-Value:"+i);
+
+try
+
 {
-public void run()
+
+Thread.sleep(500);
+
+}
+
+catch (InterruptedException e)
+
+{}
+
+This is the reason
+
+public class Runnable Example
+
 {
-for (int i=1;i<5;i++)
-System.out.println(i+"*5="+(i*5));
-}
-}
-class seventable extends Thread
+
+public static void main(String[] args)
+
 {
-public void run()
-{
-for (int i=1;i<5;i++)
-System.out.println(i+"*7="+(i*7));
+
+Runnable R=new MyRunnable();
+
+Thread t1=new Thread(R);
+
+Thread t2=new Thread(R);
+
+t1.start();
+
+t2.start();
+
 }
-}
-class thirteentable extends Thread
-{
-public void run()
-{
-for (int i=1;i<5;i++)
-System.out.println(i+"*13="+(i*13));
-}
-}
-public class multi
-{                                                                                                      
-public static void main(String args[])
-{
-fivetable five=new fivetable();
-seventable seven=new seventable();
-thirteentable thirteen=new thirteentable();
-five.setPriority(1);
-seven.setPriority(6);
-thirteen.setPriority(9);
-System.out.println("*******MULTITHREADING CONCEPT************");
-System.out.println("Multiplication Table using MultiThreading");
-System.out.println("*****************************************");
-five.start();
-seven.start();
-thirteen.start();
-}
+
 }
 
 
